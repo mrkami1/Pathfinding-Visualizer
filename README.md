@@ -11,5 +11,5 @@ Nodes can be placed with the **Left Mouse Button** and removed with the **Right 
 
 The yellow path is the path that the chosen algorithm has found.
 
-![alt_text] (example.jpg)
-![alt_text] (example2.jpg)
+![alt_text](example.jpg)
+![alt_text](example2.jpg)
