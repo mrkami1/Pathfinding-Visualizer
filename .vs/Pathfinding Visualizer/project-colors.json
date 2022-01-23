@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "f3f6ed48-ac3a-42a3-bff6-8b4f70db0c66": {
+      "ProjectGuid": "f3f6ed48-ac3a-42a3-bff6-8b4f70db0c66",
+      "DisplayName": "Pathfinding Visualizer",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

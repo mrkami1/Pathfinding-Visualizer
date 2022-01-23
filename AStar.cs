@@ -1,71 +1,94 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Threading;
 
-namespace Pathfinding_Visualizer {
-    public static class AStar {
+namespace Pathfinding_Visualizer
+{
+    public static class AStar
+    {
 
-        public static List<Node> foundPath = new List<Node>();
         private static Node endNode = Display.endNode;
         private static Node startNode = Display.startNode;
-        static HashSet<Node> openNodes = new HashSet<Node>();
-        static HashSet<Node> closedNodes = new HashSet<Node>();
+        static List<Node> openNodes = new List<Node>();
+        static List<Node> closedNodes = new List<Node>();
 
-        static AStar() {
+        public static void Start()
+        {
+            openNodes.Clear();
+            closedNodes.Clear();
             openNodes.Add(startNode);
-        }
-       
-        public static void Start() {
 
-            Node currentNode = startNode;
+            startNode.gCost = 0;
+            startNode.hCost = startNode.GetDistance(endNode);
 
-           for (int i = 0; i < 100; i++) {
-                foreach (Node n in openNodes) {
-                    if (n.fCost < currentNode.fCost || n.fCost == currentNode.fCost && n.hCost < currentNode.hCost) currentNode = n;
-                }
-                openNodes.Remove(currentNode);
-                closedNodes.Add(currentNode);
-
-                if (currentNode == endNode) {
-                    Console.WriteLine("finished");
-                    break;
+            while (openNodes.Count > 0)
+            {
+                Node current = openNodes[0];
+                
+                for (int i = 1; i < openNodes.Count; i++)
+                {
+                    if (openNodes[i].fCost < current.fCost || openNodes[i].fCost == current.fCost && openNodes[i].hCost < current.hCost)
+                    {
+                        current = openNodes[i];
+                    }
                 }
 
-                foreach (Node neighbor in currentNode.GetNeighbors()) {
-                    if (neighbor.GetNodeType() == "wall" || closedNodes.Contains(neighbor)) continue;
+                if (current.Equals(endNode))
+                {
+                    CreatePath(current);
+                    return;
+                }
 
-                    double newCost = currentNode.gCost + currentNode.GetDistance(currentNode, neighbor);
-                    if (newCost < neighbor.gCost || !openNodes.Contains(neighbor)) {
-                        neighbor.gCost = newCost;
-                        neighbor.hCost = neighbor.GetDistance(neighbor, endNode);
-                        neighbor.fCost = neighbor.gCost + neighbor.gCost;
-                        neighbor.parent = currentNode;
+                openNodes.Remove(current);
+                closedNodes.Add(current);
 
+                foreach (Node neighbor in current.GetNeighbors())
+                {
+                    if (closedNodes.Contains(neighbor) || neighbor.GetNodeType() == Node.types.wall)
+                    {
+                        continue;
+                    }
+
+                    double newGCost = current.gCost + current.GetDistance(neighbor);
+
+                    if (!openNodes.Contains(neighbor) || newGCost < neighbor.gCost)
+                    {
+                        neighbor.parent = current;
+                        neighbor.gCost = newGCost;
+                        neighbor.hCost = neighbor.GetDistance(endNode);
+                        
                         if (!openNodes.Contains(neighbor)) openNodes.Add(neighbor);
                     }
                 }
 
+                for (int i = 0; i < openNodes.Count; i++)
+                {
+                    openNodes[i].SetNodeType(Node.types.debug1);
+                    
+                }
+                for (int i = 0; i < closedNodes.Count; i++)
+                {
+                    closedNodes[i].SetNodeType(Node.types.debug3);
+                    
+                }
             }
-            Console.WriteLine("finished");
-            CreatePath();
         }
 
-        static void CreatePath() {
+        static void CreatePath(Node current)
+        {
             List<Node> path = new List<Node>();
-            Node currentNode = endNode;
 
-            while (currentNode != startNode) {
-                path.Add(currentNode);
-                currentNode = currentNode.parent;
+            while (current.parent != null)
+            {
+                path.Add(current);
+                current = current.parent;
             }
 
-            path.Reverse();
-            foundPath = path;
-            Console.WriteLine("helloo");
-            foreach(Node n in foundPath) {
-                Console.WriteLine(n.GetCell());
+            for (int i = 0; i < path.Count; i++)
+            {
+                path[i].SetNodeType(Node.types.path);
             }
         }
     }

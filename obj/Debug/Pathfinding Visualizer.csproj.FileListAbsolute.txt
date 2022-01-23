@@ -1,0 +1,12 @@
+C:\Users\mashhood\Desktop\Git repos\Pathfinding-Visualizer\obj\Debug\Pathfinding Visualizer.csproj.SuggestedBindingRedirects.cache
+C:\Users\mashhood\Desktop\Git repos\Pathfinding-Visualizer\obj\Debug\Pathfinding_Visualizer.Display.resources
+C:\Users\mashhood\Desktop\Git repos\Pathfinding-Visualizer\obj\Debug\Pathfinding Visualizer.csproj.GenerateResource.cache
+C:\Users\mashhood\Desktop\Git repos\Pathfinding-Visualizer\obj\Debug\Pathfinding Visualizer.csproj.AssemblyReference.cache
+C:\Users\mashhood\Desktop\Git repos\Pathfinding-Visualizer\bin\Debug\Pathfinding Visualizer.exe.config
+C:\Users\mashhood\Desktop\Git repos\Pathfinding-Visualizer\bin\Debug\Pathfinding Visualizer.exe
+C:\Users\mashhood\Desktop\Git repos\Pathfinding-Visualizer\bin\Debug\Pathfinding Visualizer.pdb
+C:\Users\mashhood\Desktop\Git repos\Pathfinding-Visualizer\bin\Debug\WindowsBase.dll
+C:\Users\mashhood\Desktop\Git repos\Pathfinding-Visualizer\obj\Debug\Pathfinding Visualizer.csproj.CoreCompileInputs.cache
+C:\Users\mashhood\Desktop\Git repos\Pathfinding-Visualizer\obj\Debug\Pathfinding Visualizer.csproj.CopyComplete
+C:\Users\mashhood\Desktop\Git repos\Pathfinding-Visualizer\obj\Debug\Pathfinding Visualizer.exe
+C:\Users\mashhood\Desktop\Git repos\Pathfinding-Visualizer\obj\Debug\Pathfinding Visualizer.pdb
